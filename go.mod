@@ -1,3 +1,3 @@
 module github.com/hbarral/bancard-go-client
 
-go 1.27.0
+go 1.26.0

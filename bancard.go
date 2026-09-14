@@ -33,7 +33,7 @@ const APIVersion = "0.3"
 
 var (
 	publicKeyPattern  = regexp.MustCompile(`^[a-zA-Z0-9]{32}$`)
-	privateKeyPattern = regexp.MustCompile(`^[a-zA-Z0-9T1]{40}$`)
+	privateKeyPattern = regexp.MustCompile(`^[!-~]{40}$`)
 )
 
 // ErrInvalidPublicKey is returned by New when the public key does not
@@ -41,7 +41,8 @@ var (
 var ErrInvalidPublicKey = fmt.Errorf("bancard: public key must match %s", publicKeyPattern.String())
 
 // ErrInvalidPrivateKey is returned by New when the private key does not
-// match the format expected by VPOS: [a-zA-Z0-9T1]{40}.
+// match the format expected by VPOS: 40 printable ASCII characters
+// ([!-~]).
 var ErrInvalidPrivateKey = fmt.Errorf("bancard: private key must match %s", privateKeyPattern.String())
 
 // ErrInvalidEnvironment is returned by New when the environment is neither

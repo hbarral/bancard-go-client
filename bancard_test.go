@@ -17,6 +17,7 @@ func TestNewValidatesCredentials(t *testing.T) {
 		wantErr    error
 	}{
 		{"valid", testPublicKey, testPrivateKey, Staging, nil},
+		{"valid private key with special chars", testPublicKey, "8wdFWt38vOMdz)UkwCapPgpgJTOf0w2NtSjq,84x", Staging, nil},
 		{"invalid public key too short", "short", testPrivateKey, Staging, ErrInvalidPublicKey},
 		{"invalid public key bad chars", "kR6oAQoIYCqUZLAivLQgac3lO7mv5bX!", testPrivateKey, Staging, ErrInvalidPublicKey},
 		{"invalid private key too short", testPublicKey, shortPriv, Staging, ErrInvalidPrivateKey},
